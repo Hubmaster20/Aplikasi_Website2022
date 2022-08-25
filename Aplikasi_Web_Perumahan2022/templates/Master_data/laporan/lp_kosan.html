@@ -1,0 +1,64 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Laporan</title>
+  <link href="/static/js_print/styles.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+    table, th, td {
+        border: 1px solid blue;
+    }
+    td {
+    padding: 10px;
+    text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+<div id="body"> 
+<div align="center">
+<h4><strong><u>LAPORAN DATA KOSAN</u></strong></h4>
+</div>
+<table id="example1" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Kosan</th>
+                          <th>Nama Kategori</th>
+                          <th>Tipe Kosan</th>
+                          <th>Luas</th>
+                          <th>Alamat</th>
+                          <th>No-Hp</th>
+                          <th>Deskripsi</th>
+                          <th>Foto Kosan</th>
+                          <th>Vasilitas</th>
+                          <th>Harga</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for tampil in tampil %}
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{tampil.nama_kosan}}</td>
+                          <td>{{tampil.nama_kategori}}</td>
+                          <td>{{tampil.tipe_kosan}}</td>
+                          <td>{{tampil.luas}}</td>
+                          <td>{{tampil.alamat}}</td>
+                          <td>{{tampil.nohp}}</td>
+                          <td>{{tampil.deskripsi}}</td>
+                          <td><img src="{{tampil.foto_kosan.url}}" style="width:120px"></td>
+                          <td>{{tampil.vasilitas}}</td>
+                          <td>{{tampil.harga}}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+</body>
+</html>

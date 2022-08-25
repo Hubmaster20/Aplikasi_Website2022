@@ -1,0 +1,70 @@
+{% include "head_atas.html" %}
+            <div class="row">
+              
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h3><i class="fa fa-building-o"></i> TAMBAH DATA KOSAN</h3>
+                    <form method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <label>Nama Kosan</label>
+                      <input type="text" name="nama_kosan" required class="form-control" placeholder="Enter Nama Kosan" value="{{edit_data.nama_kosan}}">
+
+                      <label>Pilih Kategori</label>
+                      <select class="form-control" name="nama_kategori" required>
+                        <option>{{edit_data.nama_kategori}}</option>
+                        <option value="">Pilih Kategori</option>
+                        {% for select_kosan in select_kategori %}
+                        <option>{{select_kategori.nama_kategori}}</option>
+                        {% endfor %}
+                      </select>
+                      <label>Tipe Kosan</label>
+                      <select class="form-control" name="tipe_kosan" required>
+                        <option>{{edit_data.tipe_kosan}}</option>
+                        <option value="">Pilih Tipe Kosan</option>
+                        {% for select_tipe in select_kategori %}
+                        <option>{{select_tipe.tipe_kosan}}</option>
+                        {% endfor %}
+                      </select>
+
+                      <label>Luas Kosan</label>
+                      <input type="text" name="luas" required class="form-control" placeholder="Enter Luas Kosan" value="{{edit_data.luas}}">
+                      <label>Alamat Kosan</label>
+                      <input type="text" name="alamat" required class="form-control" placeholder="Enter Alamat" value="{{edit_data.alamat}}">
+                      <label>No-Hp</label>
+                      <input type="text" name="nohp" required class="form-control" placeholder="Enter No-Hp" value="{{edit_data.nohp}}">
+
+                      <label>Deskripsi Kosan</label>
+                      <textarea class="form-control" rows="9" name="deskripsi" required placeholder="Enter Deskripsi">{{edit_data.deskripsi}}</textarea>
+                      <label>Upload Foto Kosan</label>
+                      <input type="file" name="foto_kosan" required class="form-control" placeholder="Enter Foto Kosan" value="{{edit_data.foto_kosan}}">
+                      <label>Vasilitas Kosan</label>
+                      <select class="form-control" name="vasilitas" required>
+                        <option>{{edit_data.vasilitas}}</option>
+                        <option value="">Pilih Vasilitas</option>
+                        {% for select_v in select_vasilitas %}
+                        <option>{{select_v.nama_vasilitas}}</option>
+                        {% endfor %}
+                      </select>
+
+                      <label>Harga Kosan</label>
+                      <input type="text" name="harga" required class="form-control" placeholder="Enter Harga" value="{{edit_data.harga}}">
+
+                       <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success">Submit</button>
+                          <a href="{% url 'Kosan' %}" class="btn btn-sm btn-danger">
+                          Cancel</a>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+</div>
+</div>
+{% include "head_bawah.html" %}

@@ -1,0 +1,54 @@
+{% include 'Website/style_atas.html' %}
+    <div class="site-section site-section-sm bg-light">
+      <div class="container">
+      
+        <div class="row mb-5">
+        {% for tampil in tampil_perumahan %}
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="property-entry h-100">
+              <a href="property-details.html" class="property-thumbnail">
+                <div class="offer-type-wrap">
+                  <span class="offer-type bg-danger">Sale</span>
+                  <span class="offer-type bg-success">Rent</span>
+                </div>
+                <img src="{{tampil.foto_perumahan.url}}" alt="Image" class="img-fluid">
+              </a>
+              <div class="p-4 property-body">
+                <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
+                <h2 class="property-title"><a href="">{{tampil.nama_perumahan}}</a></h2>
+                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Alamat : {{tampil.alamat}}</span>
+                <strong class="property-price text-primary mb-3 d-block text-success">Rp. {{tampil.harga}}</strong>
+                <ul class="property-specs-wrap mb-3 mb-lg-0">
+                  <li>
+                    <span class="property-specs">Luas</span>
+                    <span class="property-specs-number">{{tampil.luas}} </span>
+                    
+                  </li>
+                  <li>
+                    <span class="property-specs">Tipe Perumahan</span>
+                    <span class="property-specs-number">{{tampil.tipe_perumahan}}</span>                    
+                  </li>
+                  <li>
+                    <span class="property-specs">
+                      <form method="get" action="{% url 'detail_perumahan' %}">
+                        <input type="hidden" name="cari_perumahan" value="{{tampil.id}}">
+                        <button type="submit" class="btn btn-sm btn-info"><i class="icon icon-check"></i> Detail</button>
+                      </form>
+                    </span>                    
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+          {% endfor%}
+          
+        
+        
+        </div>
+        
+        
+      </div>
+    </div>
+
+{% include 'Website/style_bawah.html' %}

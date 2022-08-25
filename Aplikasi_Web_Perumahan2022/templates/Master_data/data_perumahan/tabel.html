@@ -1,0 +1,70 @@
+{% include "head_atas.html" %}
+{% if messages %}
+{% for info in messages %}
+<script>alert('{{info}}');location='{% url "Perumahan" %}';</script>
+{% endfor %}
+{% endif %}
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-building-o"></i><b><u>TABEL DATA PERUMAHAN</u></b></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a href="{% url 'Tambah_perumahan' %}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Perumahan</th>
+                          <th>Nama Kategori</th>
+                          <th>Tipe Perumahan</th>
+                          <th>Luas</th>
+                          <th>Alamat</th>
+                          <th>No-Hp</th>
+                          <th>Deskripsi</th>
+                          <th>Foto Perumahan</th>
+                          <th>Vasilitas</th>
+                          <th>Harga</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for tampil in tampil %}
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{tampil.nama_perumahan}}</td>
+                          <td>{{tampil.nama_kategori}}</td>
+                          <td>{{tampil.tipe_perumahan}}</td>
+                          <td>{{tampil.luas}}</td>
+                          <td>{{tampil.alamat}}</td>
+                          <td>{{tampil.nohp}}</td>
+                          <td>{{tampil.deskripsi}}</td>
+                          <td><img src="{{tampil.foto_perumahan.url}}" style="width:120px"></td>
+                          <td>{{tampil.vasilitas}}</td>
+                          <td>{{tampil.harga}}</td>
+                          <td>
+<a href="{% url 'edit_perumahan' tampil.id %}" class="btn btn-xs btn-success" title="Edit" onclick="return confirm('Apakah Anda Yakin Ingin Mengedit Data')">
+      <i class="ace-icon fa fa-pencil bigger-130"></i>
+      </a>
+<a href="{% url 'hapus_perumahan' tampil.id %}" class="btn btn-xs btn-danger" title="Hapus" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data')">
+      <i class="ace-icon fa fa-trash-o bigger-130"></i>
+      </a>    
+  </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              
+        </div>
+        <!-- /page content -->
+
+{% include "head_bawah.html" %}
